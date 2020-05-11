@@ -1,0 +1,71 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>倒计时精确到毫秒-jq22.com</title>
+<script src="https://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<style>
+ #timer {
+	height:50px;
+	width:100%;
+	text-align:center;
+	line-height:50px;
+	background:black;
+	color:white;
+	margin-top:100px;
+}
+</style>
+</head>
+<body>
+<div id="timer"></div>
+
+<script>
+function TimeTo(dd) {
+    var t = new Date(dd), //取得指定时间的总毫秒数  
+        n = new Date().getTime(), //取得当前毫秒数  
+        c = t - n; //得到时间差
+    //w = (t - n)*1000;//得到时间差
+    if (c <= 0) { //如果差小于等于0  也就是过期或者正好过期，则推出程序  
+        document.getElementById('js').innerHTML = document.getElementById('hj').innerHTML;
+        document.getElementById('js1').innerHTML = document.getElementById('hj').innerHTML;
+        clearInterval(window['ttt']); //清除计时器  
+        return; //结束执行  
+    }
+
+    d = parseInt(c / 1000 / 60 / 60 / 24), //总毫秒除以一天的毫秒 得到相差的天数  
+        h = parseInt(c / 1000 / 60 / 60 - (24 * d)), //然后取完天数之后的余下的毫秒数再除以每小时的毫秒数得到小时 
+        m = parseInt(c / 1000 / 60 - (24 * 60 * d) - (60 * h)), //减去天数和小时数的毫秒数剩下的毫秒，再除以每分钟的毫秒数，得到分钟数 
+        s = parseInt(c / 1000 - (24 * 60 * 60 * d) - (60 * 60 * h) - (60 * m)); //得到最后剩下的毫秒数除以1000 就是秒数，再剩下的毫秒自动忽略即可
+    hm = Math.floor((c - (24 * 60 * 60 * 1000 * d) - (60 * 60 * 1000 * h) - (60 * 1000 * m) - (s * 1000)) / 10);
+    if (hm < 10) {
+        hm = "0" + hm;
+    }
+    if (s < 10) {
+        s = "0" + s;
+    }
+    if (m < 10) {
+        m = "0" + m;
+    }
+    if (h < 10) {
+        h = "0" + h;
+    }
+
+    document.getElementById('timer').innerHTML = '距离下班还有：' + d + '天' + h + '小时' + m + '分钟' + s + '秒' + hm + '毫秒'; //最后这句讲定义好的显示 更新到 ID为 timer的 div中
+
+}
+(function() {
+    window['ttt'] = setInterval(function() {
+		var myDate = new Date();
+		var time = '';
+		if(myDate.getDay()==0 || myDate.getDay()==6){
+		time=myDate.toLocaleDateString()+ ' 17:30:00:00';
+		}else{
+		time=myDate.toLocaleDateString()+ ' 19:00:00:00';
+		}
+        TimeTo(time); //定义倒计时的结束时间，注意格式  
+    }, 50); //定义计时器，每隔1000毫秒 也就是1秒 计算并更新 div的显示  
+})();
+</script>
+
+</body>
+</html>
