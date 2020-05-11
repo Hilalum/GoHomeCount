@@ -17,7 +17,7 @@
 </style>
 </head>
 <body>
-<div id="timer"></div>
+<div id="timer">下班了，好好休息</div>
 
 <script>
 function TimeTo(dd) {
@@ -25,10 +25,10 @@ function TimeTo(dd) {
         n = new Date().getTime(), //取得当前毫秒数  
         c = t - n; //得到时间差
     //w = (t - n)*1000;//得到时间差
-    if (c <= 0) { //如果差小于等于0  也就是过期或者正好过期，则推出程序  
+    if (c <= 0||new Date().getDay()==0) { //如果差小于等于0  也就是过期或者正好过期，则推出程序  
+		document.getElementById('timer').innerHTML = '下班了，好好休息'; //最后这句讲定义好的显示 更新到 ID为 timer的 div中
         document.getElementById('js').innerHTML = document.getElementById('hj').innerHTML;
         document.getElementById('js1').innerHTML = document.getElementById('hj').innerHTML;
-		document.getElementById('timer').innerHTML = '下班了，好好休息'; //最后这句讲定义好的显示 更新到 ID为 timer的 div中
         clearInterval(window['ttt']); //清除计时器  
         return; //结束执行  
     }
