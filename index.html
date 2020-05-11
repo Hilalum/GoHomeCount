@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>倒计时精确到毫秒-jq22.com</title>
+<title>下班倒计时</title>
 <script src="https://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
 <style>
  #timer {
@@ -28,6 +28,7 @@ function TimeTo(dd) {
     if (c <= 0) { //如果差小于等于0  也就是过期或者正好过期，则推出程序  
         document.getElementById('js').innerHTML = document.getElementById('hj').innerHTML;
         document.getElementById('js1').innerHTML = document.getElementById('hj').innerHTML;
+		document.getElementById('timer').innerHTML = '下班了，好好休息'; //最后这句讲定义好的显示 更新到 ID为 timer的 div中
         clearInterval(window['ttt']); //清除计时器  
         return; //结束执行  
     }
@@ -49,7 +50,6 @@ function TimeTo(dd) {
     if (h < 10) {
         h = "0" + h;
     }
-
     document.getElementById('timer').innerHTML = '距离下班还有：' + d + '天' + h + '小时' + m + '分钟' + s + '秒' + hm + '毫秒'; //最后这句讲定义好的显示 更新到 ID为 timer的 div中
 
 }
