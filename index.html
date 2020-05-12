@@ -3,22 +3,38 @@
 <head>
 <meta charset="utf-8">
 <title>下班倒计时</title>
-<script src="https://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<style>
+
+<style media="screen" type="text/css">
+.bg{
+background:url(sz5.jpg);
+filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+-moz-background-size:100% 100%;
+	background-size:100% 100%;
+}
+
  #timer {
-	height:50px;
-	width:100%;
+            width: 100vw;        /* 宽度  页面宽度的90% */
+            height: 100vh;       /* 高度  页面高度的60% */
+            /* 容器自动水平居中 */
+            margin: 0px auto; 
+             
+            /* 实现垂直居中 距顶部高度  也可以写成 calc((100vh - 60vh)/2) */
+            margin-top: 45vh; 
 	text-align:center;
 	line-height:50px;
-	background:black;
 	color:white;
 	margin-top:100px;
 }
-</style>
-</head>
-<body>
-<div id="timer">下班了，好好休息</div>
 
+</style>
+<script src="https://libs.baidu.com/jquery/1.11.3/jquery.min.js">
+</script>
+</head>
+<body class="bg">
+
+<div id="timer">
+下班了，好好休息
+</div>
 <script>
 function TimeTo(dd) {
     var t = new Date(dd), //取得指定时间的总毫秒数  
@@ -26,7 +42,6 @@ function TimeTo(dd) {
         c = t - n; //得到时间差
     //w = (t - n)*1000;//得到时间差
     if (c <= 0||new Date().getDay()==0) { //如果差小于等于0  也就是过期或者正好过期，则推出程序  
-		document.getElementById('timer').innerHTML = '下班了，好好休息'; //最后这句讲定义好的显示 更新到 ID为 timer的 div中
         document.getElementById('js').innerHTML = document.getElementById('hj').innerHTML;
         document.getElementById('js1').innerHTML = document.getElementById('hj').innerHTML;
         clearInterval(window['ttt']); //清除计时器  
