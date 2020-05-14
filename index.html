@@ -36,12 +36,12 @@ filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')
 下班了，好好休息
 </div>
 <script>
-function TimeTo(dd) {
+function TimeTo(dd,ss) {
     var t = new Date(dd), //取得指定时间的总毫秒数  
         n = new Date().getTime(), //取得当前毫秒数  
         c = t - n; //得到时间差
     //w = (t - n)*1000;//得到时间差
-    if (c <= 0||new Date().getDay()==0) { //如果差小于等于0  也就是过期或者正好过期，则推出程序  
+    if (ss=='下班'&&(c <= 0||new Date().getDay()==0)) { //如果差小于等于0  也就是过期或者正好过期，则推出程序  
         clearInterval(window['ttt']); //清除计时器  
 		document.getElementById('timer').innerHTML = '下班了，好好休息';
         return; //结束执行  
@@ -64,19 +64,29 @@ function TimeTo(dd) {
     if (h < 10) {
         h = "0" + h;
     }
-    document.getElementById('timer').innerHTML = '距离下班还有：' + d + '天' + h + '小时' + m + '分钟' + s + '秒' + hm + '毫秒'; //最后这句讲定义好的显示 更新到 ID为 timer的 div中
+    document.getElementById('timer').innerHTML = '距离'+ss+'还有：' + d + '天' + h + '小时' + m + '分钟' + s + '秒' + hm + '毫秒'; //最后这句讲定义好的显示 更新到 ID为 timer的 div中
 
 }
 (function() {
     window['ttt'] = setInterval(function() {
 		var myDate = new Date();
 		var time = '';
+		var s='';
 		if(myDate.getDay()==0 || myDate.getDay()==6){
 		time=myDate.toLocaleDateString()+ ' 17:30:00';
+		s='下班';
 		}else{
 		time=myDate.toLocaleDateString()+ ' 19:00:00';
+		s='下班';
 		}
-        TimeTo(time); //定义倒计时的结束时间，注意格式  
+		var h=myDate.getHours();
+		
+    console.log(h);
+		if(h<12){
+		time=myDate.toLocaleDateString()+ ' 12:00:00';
+		s='午休';
+		}
+        TimeTo(time,s); //定义倒计时的结束时间，注意格式  
     }, 50); //定义计时器，每隔1000毫秒 也就是1秒 计算并更新 div的显示  
 })();
 </script>
