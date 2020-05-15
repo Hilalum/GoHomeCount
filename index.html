@@ -31,11 +31,20 @@ filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')
 </script>
 </head>
 <body class="bg">
-
 <div id="timer">
 下班了，好好休息
 </div>
 <script>
+  function Color(elem) {
+    this.elem = elem
+    this.colors = ['#f1c40f', '#2ecc71', '#e74c3c', '#9b59b6'];
+    this.run = function (target = 'background') {
+      setInterval(() => {
+        let i = Math.floor(Math.random() * this.colors.length)
+        this.elem.style[target] = this.colors[i];
+      }, 1000)
+    }
+  }
 function TimeTo(dd,ss) {
     var t = new Date(dd), //取得指定时间的总毫秒数  
         n = new Date().getTime(), //取得当前毫秒数  
@@ -43,6 +52,7 @@ function TimeTo(dd,ss) {
     //w = (t - n)*1000;//得到时间差
     if (ss=='下班'&&(c <= 0||new Date().getDay()==0)) { //如果差小于等于0  也就是过期或者正好过期，则推出程序  
         clearInterval(window['ttt']); //清除计时器  
+		new Color(document.body).run();
 		document.getElementById('timer').innerHTML = '下班了，好好休息';
         return; //结束执行  
     }
