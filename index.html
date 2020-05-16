@@ -23,7 +23,6 @@ filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')
 	text-align:center;
 	line-height:50px;
 	color:white;
-	margin-top:100px;
 }
 
 </style>
@@ -37,12 +36,18 @@ filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')
 <script>
   function Color(elem) {
     this.elem = elem
+	this.alig=['left','right','center'];
     this.colors = ['#f1c40f', '#2ecc71', '#e74c3c', '#9b59b6','#fffafa','#fffaf0','#fffacd','#fff8dc','#fff68f','#fff5ee','#fff0f5','#ffefdb','#ffefd5','#ffec8b','#ffebcd','#ffe7ba','#ffe4e1','#ffe4c4','#ffe4b5','#ffe1ff','#ffdead','#ffdab9','#ffd700','#ffd39b','#ffc1c1','#ffc125','#ffc0cb','#ffbbff','#ffb90f','#ffb6c1','#ffb5c5','#ffaeb9','#ffa54f','#ffa500','#ffa07a','#ff8c69','#ff8c00','#ff83fa','#ff82ab','#ff8247','#ff7f50','#ff7f24','#ff7f00','#ff7256','#ff6eb4','#ff6a6a','#ff69b4','#ff6347','#ff4500','#ff4040','#ff3e96','#ff34b3','#ff3030','#ff1493','#ff00ff','#ff0000','#fdf5e6','#fcfcfc','#fafafa','#fafad2','#faf0e6','#faebd7','#fa8072','#f8f8ff','#f7f7f7','#f5fffa','#f5f5f5','#f5f5dc','#f5deb3','#f4f4f4','#f4a460','#f2f2f2','#f0ffff','#f0fff0','#f0f8ff','#f0f0f0','#f0e68c','#f08080','#eeeee0','#eeeed1','#eeee00','#eee9e9','#eee9bf','#eee8cd','#eee8aa','#eee685','#eee5de','#eee0e5','#eedfcc','#eedc82','#eed8ae','#eed5d2','#eed5b7','#eed2ee','#eecfa1','#eecbad','#eec900','#eec591','#eeb4b4','#eeb422','#eeaeee','#eead0e','#eea9b8','#eea2ad','#ee9a49','#ee9a00','#ee9572','#ee82ee','#ee8262','#ee7ae9','#ee799f','#ee7942','#ee7621','#ee7600','#ee6aa7','#ee6a50','#ee6363','#ee5c42','#ee4000','#ee3b3b','#ee3a8c','#ee30a7','#ee2c2c','#ee1289','#ee00ee','#ee0000','#ededed','#ebebeb','#eaeaea','#e9967a','#e8e8e8','#e6e6fa','#e5e5e5','#e3e3e3','#e0ffff','#e0eeee','#e0eee0','#e0e0e0','#e066ff','#dedede','#deb887','#dda0dd','#dcdcdc','#dc143c','#dbdbdb','#db7093','#daa520','#da70d6','#d9d9d9','#d8bfd8','#d6d6d6','#d4d4d4','#d3d3d3','#d2b48c','#d2691e','#d1eeee','#d1d1d1','#d15fee','#d02090','#cfcfcf','#cdcdc1','#cdcdb4','#cdcd00','#cdc9c9','#cdc9a5','#cdc8b1','#cdc673','#cdc5bf','#cdc1c5','#cdc0b0','#cdbe70','#cdba96','#cdb7b5','#cdb79e','#cdb5cd','#cdb38b','#cdaf95','#cdad00','#cdaa7d','#cd9b9b','#cd9b1d','#cd96cd','#cd950c','#cd919e','#cd8c95','#cd853f','#cd8500','#cd8162','#cd7054','#cd69c9','#cd6889','#cd6839','#cd661d','#cd6600','#cd6090','#cd5c5c','#cd5b45','#cd5555','#cd4f39','#cd3700','#cd3333','#cd3278','#cd2990','#cd2626','#cd1076','#cd00cd','#cd0000','#cccccc','#caff70','#cae1ff','#c9c9c9','#c7c7c7','#c71585','#c6e2ff','#c67171','#c5c1aa','#c4c4c4','#c2c2c2','#c1ffc1','#c1cdcd','#c1cdc1','#c1c1c1','#c0ff3e','#bfefff','#bfbfbf','#bf3eff','#bebebe','#bdbdbd'];
     this.run = function (target = 'background') {
       setInterval(() => {
         let i = Math.floor(Math.random() * this.colors.length)
         this.elem.style[target] = this.colors[i];
-      },175)
+		document.getElementById('timer').style.fontSize=Math.random()*150+'pt';
+		document.getElementById('timer').style.top=Math.random()*1000+'px';
+		document.getElementById('timer').style.left=Math.random()*1500+'px';
+		document.getElementById('timer').style.marginTop=Math.random()*80+'vh';
+		document.getElementById('timer').style.textAlign=this.alig[Math.floor(Math.random() * this.alig.length)];
+      },200)
     }
   }
 function TimeTo(dd,ss) {
