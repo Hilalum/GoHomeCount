@@ -95,11 +95,14 @@ function TimeTo(dd,ss) {
 		s='下班';
 		}
 		var h=myDate.getHours();
-		
-    console.log(h);
 		if(h<12){
 		time=myDate.toLocaleDateString()+ ' 12:00:00';
 		s='午休';
+		}
+		var m = myDate.getMinutes();
+		if((h==13&&m<=30)||h==12){
+		document.getElementById('timer').innerHTML = '哎呦，午休时间';
+        return; //结束执行 
 		}
         TimeTo(time,s); //定义倒计时的结束时间，注意格式  
     }, 50); //定义计时器，每隔1000毫秒 也就是1秒 计算并更新 div的显示  
