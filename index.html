@@ -104,6 +104,10 @@ function TimeTo(dd,ss) {
 		document.getElementById('timer').innerHTML = '哎呦，午休时间';
         return; //结束执行 
 		}
+	    		if((h==18&&m<=30)||(h==17&&m>=30)){
+		document.getElementById('timer').innerHTML = 'Happy dinner!';
+        return; //结束执行 
+		}
         TimeTo(time,s); //定义倒计时的结束时间，注意格式  
     }, 50); //定义计时器，每隔1000毫秒 也就是1秒 计算并更新 div的显示  
 })();
