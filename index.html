@@ -93,12 +93,12 @@ function TimeTo(dd,ss) {
 		time=myDate.toLocaleDateString()+ ' 17:30:00';
 		s='下班';
 		}else{
+					time=myDate.toLocaleDateString()+ ' 19:00:00';
+		s='下班';
 			if(h<17||(h==17&&m<30)){
 		time=myDate.toLocaleDateString()+ ' 17:30:00';
 		s='休息';
 		}
-		time=myDate.toLocaleDateString()+ ' 19:00:00';
-		s='下班';
 		}
 		
 		if(h<12){
